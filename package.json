@@ -1,0 +1,45 @@
+http://browsenpm.org/package.json#name
+
+{
+  "name": "module-name",
+  "version": "0.0.0",
+  "description": "Description of the module/application",
+  "author": "Matt Conrad <mmconrad@gmail.com>",
+  "contributors": [{
+  "name": "",
+  "email": ""
+}],
+  "bin": {
+  "module-name": "./bin/module-name"
+},
+  "private": true,
+  "scripts": {
+    "test": "vows --spec --isolate",
+    "start": "node index.js",
+    "predeploy": "echo im about to deploy",
+    "postdeploy": "echo ive deployed",
+    "prepublish": "coffee --bare --compile --output lib/foo src/foo/*.coffee",
+    "postinstall": "bower install && gulp deploy"
+  },
+  "main": "lib/foo.js",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/nodejitsu/browsenpm.org"
+},
+  "bugs": {
+  "url": "https://github.com/nodejitsu/browsenpm.org/issues"
+},
+  "keywords": [
+],
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "preferGlobal": true,
+  "publishConfig": {
+  "registry": "https://your-private-hosted-npm.registry.nodejitsu.com"
+},
+  "subdomain": "foobar",
+  "analyze": true,
+  "license": "MIT"
+}

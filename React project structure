@@ -1,0 +1,10 @@
+React project structure
+
+Main
+|-Header
+|  |-Nav
+|  |-SearchBar
+|-Videos
+  |-Video
+
+
