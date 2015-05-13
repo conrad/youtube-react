@@ -36,10 +36,10 @@ var Main = React.createClass({
     };
   },
 
+        // <Header searchText={this.state.searchText} />
   render: function() {
     return (
       <div className='container'>
-        <Header searchText={this.state.searchText} />
         <Videos videos={this.state.videos} />
       </div>
 
