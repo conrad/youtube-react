@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
+var babel = require('gulp-babel');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('browserify', function(){
   gulp.src('src/App.js')
@@ -8,6 +10,16 @@ gulp.task('browserify', function(){
     .pipe(concat('App.js'))
     .pipe(gulp.dest('dist'));
 });
+
+// gulp.task('default', function () {
+//     return gulp.src('src/**/*.js')
+//         .pipe(sourcemaps.init())
+//         .pipe(babel())
+//         .pipe(concat('all.js'))
+//         .pipe(sourcemaps.write('.'))
+//         .pipe(gulp.dest('dist'));
+// });
+
 
 gulp.task('copy', function(){
   gulp.src('src/index.html')
