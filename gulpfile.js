@@ -3,6 +3,7 @@ var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
+var rimraf = require('gulp-rimraf');
 
 gulp.task('browserify', function(){
   gulp.src('src/App.js')
@@ -10,6 +11,11 @@ gulp.task('browserify', function(){
     .pipe(concat('App.js'))
     .pipe(gulp.dest('dist'));
 });
+
+gulp.task('clean', function() {
+  return gulp.src('./dist/**/*.*', {read: false}) // much faster
+    .pipe(rimraf());
+})
 
 // gulp.task('default', function () {
 //     return gulp.src('src/**/*.js')
@@ -30,7 +36,7 @@ gulp.task('watch', function(){
   gulp.watch('src/*/**.*', ['default']);
 });
 
-gulp.task('default', ['browserify', 'copy']);
+gulp.task('default', ['clean', 'browserify', 'copy', 'watch']);
 
 // var gulp = require('gulp');
 // var uglify = require('gulp-uglify');
