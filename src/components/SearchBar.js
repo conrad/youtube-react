@@ -11,9 +11,9 @@ var SearchBar = React.createClass({
   render: function() {
     return (
       <div className="searchBar">
-        <form>
-          <input type="text" placeholder="Search Videos..." ref="search" onSubmit={this.onSearchSubmit} />
-          <button type="submit">Search</button>
+        <form className="searchForm">
+          <input className="textBox" type="text" placeholder="Search Videos..." ref="search" onSubmit={this.onSearchSubmit} />
+          <button className="searchButton" type="submit">Search</button>
         </form>
       </div>
     );

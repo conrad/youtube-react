@@ -30,6 +30,8 @@ gulp.task('clean', function() {
 gulp.task('copy', function(){
   gulp.src('src/index.html')
     .pipe(gulp.dest('dist'));
+  gulp.src('src/styles/*.css')
+    .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('watch', function(){

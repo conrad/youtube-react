@@ -9,7 +9,7 @@ var Header = React.createClass({
   render: function() {
     return (
       <div className='header'>
-        <img className='logo' src="https://pmcvariety.files.wordpress.com/2014/07/youtube-logo-full_color.jpg?w=670&h=377&crop=1" height="40px" width="80px" />
+        <img className='logo' src="https://pmcvariety.files.wordpress.com/2014/07/youtube-logo-full_color.jpg?w=670&h=377&crop=1" />
         <SearchBar searchText={this.props.searchText} onSearchSubmit={this.props.HandleSearch} />
       </div>
 

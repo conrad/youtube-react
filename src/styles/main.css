@@ -1,0 +1,33 @@
+/* main.css */
+
+body {
+  margin: 0;
+}
+
+.header {
+  background-color: #f2f2f2;
+}
+
+.logo {
+  display: inline-block;
+  height: 45px;
+  width: 90px; 
+}
+.searchBar {
+  display: inline-block;
+  /*text-align: center;*/
+  vertical-align: top;
+  margin: 10px 20px;
+}
+.searchForm {
+  display: inline-block;
+  /*padding: */
+}
+.textBox {
+  width: 220px;
+  height: 15px;
+  padding: 4px 10px;
+  margin-right: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+}
