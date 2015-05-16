@@ -8,41 +8,28 @@ var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 
 var _store = {
-  videos: [
-    {
-      id: 0,
-      title: "Dog Sneezing",
-      author: "Rover Hendrix",
-      url: 'https://www.youtube.com/watch?v=829os-2BQBM',
-      views: 10000000,
-      date: '2012-04-23T18:25:43.511Z'
-    },
-    {
-      id: 1,
-      title: "Philip Seymour Hoffman Laughing",
-      author: "Tom Cruise",
-      url: 'https://www.youtube.com/watch?v=vq_pjh1y2Ec',
-      views: 19999999990000,
-      date: '2012-04-23T18:25:43.511Z'
-    },
-    {
-      id: 2,
-      title: "Top 10 Soccer Goals",
-      author: "Pele",
-      url: 'https://www.youtube.com/watch?v=rYZW_ujLH40',
-      views: 10000023400,
-      date: '2012-04-23T18:25:43.511Z'
-    }
-  ],
+  videos: [],
   searchText: ''
 };
 
-var addVideo = function(vidObject){
+// create reference to Firebase videos object
+var fireVideosRef = new Firebase('https://react-video.firebaseio.com/videos/');
+fireVideosRef.on('child_added', function(videos) {
+  _store.videos = videos;
+});
 
+// var loadVideos = function() {
+//   _store.videos = new Firebase('https://react-video.firebaseio.com/videos/');
+// }
+
+var addVideo = function(vidObject){
+  fireVideosRef.push(vidObject);
 };
 
 var deleteVideo = function(vidId){
-
+  // vidId must match the ID/index of the video being deleted
+  var vidRef = new Firebase('https://react-video.firebaseio.com/videos/' + vidId);
+  vidRef.remove();
 };
 
 // This AppStore object emits changes made and allows components to access to the store only to GET its data
@@ -54,6 +41,7 @@ var AppStore = objectAssign({}, EventEmitter.prototype, {
     this.removeListener(CHANGE_EVENT, cb);
   },
   getData: function() {
+    // loadVideos();
     return _store;
   },
 

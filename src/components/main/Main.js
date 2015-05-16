@@ -3,23 +3,34 @@
 var React = require('react');
 var Header = require('./Header');
 var Videos = require('./Videos');
-var Store = require('../stores/AppStore');
+var Store = require('../../stores/AppStore');
+
+function getState() {
+  return {
+    videos: AppStore.getData().videos,
+    searchText: AppStore.getData().searchText
+    // getData() returns an object with property videos
+  };
+}
 
 var Main = React.createClass({
 
   mixins: [ReactFireMixin],
+
   getInitialState: function() {
-    return ({             // Store.getData();
+    return ({     //Store.getData();
       videos: [],
       searchText: ''
     })  
   },
 
   // Because of the data binding provided by ReactFire, any changes to Firebase will be reflected in realtime to this.state.
-  componentWillMount: function() {
-    this.bindAsArray(new Firebase("https://react-video.firebaseio.com/videos/"), "videos");
+  componentDidMount: function() {
+    AppStore.addChangeListener(this._onChange);
   },
-
+  componentWillUnmount: function(){
+    AppStore.removeChangeListenter(this._onChange);
+  },
   handleSearch: function() {
     
   },
@@ -32,6 +43,10 @@ var Main = React.createClass({
       </div>
 
     );
+  },
+
+  _onChange: function(){
+    this.setState(getState());
   }
 
 });
