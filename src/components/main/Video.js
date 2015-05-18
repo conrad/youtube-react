@@ -5,11 +5,11 @@ var Video = React.createClass({
   render: function() {
     
     var url = this.props.data.url.replace("watch?v=", "v/");
-
+    var src = "http://" + this.props.data.image;
     return (
       <li>
-        <a href="#">
-          <img className='thumbnail' src={this.props.image} />
+        <a href='#'>
+          <img className='thumbnail' src={src} />
         </a>
         <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
         <p>by {this.props.data.author}</p>
