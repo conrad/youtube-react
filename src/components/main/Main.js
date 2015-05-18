@@ -3,7 +3,7 @@
 var React = require('react');
 var Header = require('./Header');
 var Videos = require('./Videos');
-var Store = require('../../stores/AppStore');
+var AppStore = require('../../stores/AppStore');
 
 function getState() {
   return {
@@ -47,6 +47,7 @@ var Main = React.createClass({
 
   _onChange: function(){
     this.setState(getState());
+    console.log('setstate called');
   }
 
 });

@@ -15,7 +15,10 @@ var _store = {
 // create reference to Firebase videos object
 var fireVideosRef = new Firebase('https://react-video.firebaseio.com/videos/');
 fireVideosRef.on('child_added', function(videos) {
-  _store.videos = videos;
+  console.log('data from child added:', videos.val());
+  _store.videos.push(videos.val());
+  // console.log('child added fired');
+  console.log('Now _store is:', _store);
 });
 
 // var loadVideos = function() {
@@ -35,7 +38,8 @@ var deleteVideo = function(vidId){
 // This AppStore object emits changes made and allows components to access to the store only to GET its data
 var AppStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
-    this.on(CHANGE_EVENT, cb);
+    // this.on(CHANGE_EVENT, cb);
+    this.addListener(CHANGE_EVENT, cb);
   },
   removeChangeListenter: function(cb){
     this.removeListener(CHANGE_EVENT, cb);

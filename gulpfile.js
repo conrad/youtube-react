@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 var rimraf = require('gulp-rimraf');
+var runSequence = require('run-sequence');
 
 gulp.task('browserify', function(){
   gulp.src('src/App.js')
@@ -17,6 +18,25 @@ gulp.task('clean', function() {
     .pipe(rimraf());
 })
 
+gulp.task('copy', function(){
+  gulp.src('src/index.html')
+    .pipe(gulp.dest('dist'));
+  gulp.src('src/styles/*.css')
+    .pipe(gulp.dest('dist/styles'));
+});
+
+gulp.task('watch', function(){
+  gulp.watch('src/**/*.*', ['default']);
+});
+
+
+gulp.task('default', function(cb) {
+  runSequence('clean', 'browserify', 'copy', 'watch', cb);
+});
+
+// gulp.task('default', ['clean', 'browserify', 'copy', 'watch']);
+
+
 // gulp.task('default', function () {
 //     return gulp.src('src/**/*.js')
 //         .pipe(sourcemaps.init())
@@ -26,19 +46,6 @@ gulp.task('clean', function() {
 //         .pipe(gulp.dest('dist'));
 // });
 
-
-gulp.task('copy', function(){
-  gulp.src('src/index.html')
-    .pipe(gulp.dest('dist'));
-  gulp.src('src/styles/*.css')
-    .pipe(gulp.dest('dist/styles'));
-});
-
-gulp.task('watch', function(){
-  gulp.watch('src/*/**.*', ['default']);
-});
-
-gulp.task('default', ['clean', 'browserify', 'copy', 'watch']);
 
 // var gulp = require('gulp');
 // var uglify = require('gulp-uglify');
