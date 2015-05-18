@@ -19,6 +19,7 @@ fireVideosRef.on('child_added', function(videos) {
   _store.videos.push(videos.val());
   // console.log('child added fired');
   console.log('Now _store is:', _store);
+  AppStore.emit(CHANGE_EVENT);
 });
 
 // var loadVideos = function() {
@@ -27,19 +28,20 @@ fireVideosRef.on('child_added', function(videos) {
 
 var addVideo = function(vidObject){
   fireVideosRef.push(vidObject);
+  AppStore.emit(CHANGE_EVENT);
 };
 
 var deleteVideo = function(vidId){
   // vidId must match the ID/index of the video being deleted
   var vidRef = new Firebase('https://react-video.firebaseio.com/videos/' + vidId);
-  vidRef.remove();
+  vidRef.child(vidId).remove();
 };
 
 // This AppStore object emits changes made and allows components to access to the store only to GET its data
 var AppStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
-    // this.on(CHANGE_EVENT, cb);
-    this.addListener(CHANGE_EVENT, cb);
+    this.on(CHANGE_EVENT, cb);
+    // this.addListener(CHANGE_EVENT, cb);
   },
   removeChangeListenter: function(cb){
     this.removeListener(CHANGE_EVENT, cb);
@@ -70,3 +72,24 @@ AppDispatcher.register(function(payload){
 });
 
 
+
+
+
+// Initial data:
+// author: "Pele"
+// date: "2012-04-23T18:25:43.511Z"
+// title: "Top 10 Soccer Goals"
+// url: "https://www.youtube.com/watch?v=rYZW_ujLH40"
+// views: 10000023400
+
+// author: "Rover Hendrix"
+// date: "2012-04-23T18:25:43.511Z"
+// title: "Dog Sneezing"
+// url: "https://www.youtube.com/watch?v=829os-2BQBM"
+// views: 10000000
+
+// author: "Tom Cruise"
+// date: "2012-04-23T18:25:43.511Z"
+// title: "Philip Seymour Hoffman Laughing"
+// url: "https://www.youtube.com/watch?v=vq_pjh1y2Ec"
+// views: 19999999990000
