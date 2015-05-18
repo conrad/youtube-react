@@ -54,16 +54,15 @@ AppDispatcher.register(function(payload){
   var action = payload.action;
   switch (action.actionType){
     case AppConstants.UPLOAD_VIDEO:
-      addVideo(vidObject);
-      AppStore.emit(CHANGE_EVENT);
+      addVideo(vidObject);     // AppStore.emit(CHANGE_EVENT);
       break;
     case AppConstants.REMOVE_VIDEO:
-      deleteVideo(vidId);
-      AppStore.emit(CHANGE_EVENT);
+      deleteVideo(vidId);      // AppStore.emit(CHANGE_EVENT);
       break;
-    default:
-      return true;
+    // default:      // return true;
   }
+  AppStore.emit(CHANGE_EVENT);
+  return true;
 });
 
 
