@@ -6,8 +6,6 @@ var Main = require('./main/Main');
 var AppStore = require('../stores/AppStore');
 
 var Router = require('react-router');     // or ReactRouter in browsers
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
 
 

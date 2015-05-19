@@ -6,13 +6,13 @@ var Videos = React.createClass({
 
   render: function() {
     
-    var list = this.props.videos.map(function(vid){
-      return <Video data={vid} />;
-    });
+    // var list = this.props.videos.map(function(vid){
+    //   return <Video data={vid} />;
+          // {list}
+    // });
     return (
       <div> 
         <ul>
-          {list}
         </ul>
       </div>
     );
