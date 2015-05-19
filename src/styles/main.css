@@ -44,8 +44,15 @@ img{
 li{
   padding: 10px;
   margin:10px;
+  height:auto;
+  width:196px;
   border: 1px solid black;
-  height: 110px;
-  width: 196px;
-  color: green;
+}
+a{
+  text-decoration: none;
+  color:#167ac6;
+  font-size:13px;
+}
+p{
+  font-size: 11px;
 }
