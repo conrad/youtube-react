@@ -9,10 +9,11 @@ var Video = React.createClass({
     return (
       <li>
         <a href='#'>
-          <img className='thumbnail' src={src} />
-          
+          <img className='thumbnail' src={src}/> 
         </a>
-        <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
+        <a href='#'>
+          <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
+        </a>
         <p>by {this.props.data.author}</p>
         <p>View: {this.props.data.views} - {this.props.data.date}</p>
       </li>
