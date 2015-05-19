@@ -8,6 +8,7 @@ var Uploader = React.createClass({
   render: function() {
     return (
       <div className='uploader'>
+        Hey! This is going to be the Uploader!
         <img src='' />
       </div>
 

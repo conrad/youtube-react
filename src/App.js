@@ -1,14 +1,17 @@
 var React = require('react');
-var Router = require('react-router'); // or ReactRouter in browsers
-var Uploader = require('./uploader/Uploader');
-var Main = require('./main/Main');
+var AppRouter = require('./components/AppRouter');
+var Uploader = require('./components/uploader/Uploader');
+var Main = require('./components/main/Main');
 
+var Router = require('react-router');     // or ReactRouter in browsers
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler = Router.RouteHandler;
 
 
 var routes = (
-  <Route name="app" path="/" handler={App}>  // handler???
+  <Route name="app" path="/" handler={AppRouter}>     
     <Route name="uploader" handler={Uploader}/>
-    // <Route name="viewer" path=":videoId" handler={Viewer}/>
     <DefaultRoute handler={Main}/>
   </Route>
 );

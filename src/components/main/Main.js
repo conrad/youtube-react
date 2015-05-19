@@ -2,10 +2,11 @@
 
 var React = require('react');
 var Header = require('./Header');
-var Videos = require('./Videos');
+var List = require('./list/List');
+var Viewer = require('./viewer/Viewer');     
 var AppStore = require('../../stores/AppStore');
 
-var Router = require('react-router'); // or ReactRouter in browsers
+var Router = require('react-router');       // or ReactRouter in browsers
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
 var Route = Router.Route;
@@ -22,7 +23,7 @@ function getState() {
 
 var Main = React.createClass({
 
-  mixins: [ReactFireMixin],
+  // mixins: [ReactFireMixin],
 
   getInitialState: function() {
     return ({     //Store.getData();
@@ -46,14 +47,14 @@ var Main = React.createClass({
     return (
       <div className='container'>
         <Header searchText={this.state.searchText} onSearchSubmit={this.handleSearch} />
-        <Videos videos={this.state.videos} />
 
-        {/* this is the important part */}
-        <RouteHandler/>
+        <RouteHandler />
       </div>
 
     );
   },
+
+  // videos={this.state.videos} 
 
   _onChange: function(){
     this.setState(getState());
@@ -63,3 +64,14 @@ var Main = React.createClass({
 });
 
 module.exports = Main;
+
+var routes = (
+  <Route name="main" path="/" handler={Main}>     
+    <Route name="viewer" path=":videoId" handler={Viewer}/>
+    <DefaultRoute name="list" handler={List}/>
+  </Route>
+);
+
+
+
+

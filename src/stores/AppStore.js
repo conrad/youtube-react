@@ -15,16 +15,11 @@ var _store = {
 // create reference to Firebase videos object
 var fireVideosRef = new Firebase('https://react-video.firebaseio.com/videos/');
 fireVideosRef.on('child_added', function(videos) {
-  console.log('data from child added:', videos.val());
+  // console.log('data from child added:', videos.val());
   _store.videos.push(videos.val());
-  // console.log('child added fired');
-  console.log('Now _store is:', _store);
+  // console.log('Now _store is:', _store);
   AppStore.emit(CHANGE_EVENT);
 });
-
-// var loadVideos = function() {
-//   _store.videos = new Firebase('https://react-video.firebaseio.com/videos/');
-// }
 
 var addVideo = function(vidObject){
   fireVideosRef.push(vidObject);
