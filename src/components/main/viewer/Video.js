@@ -1,6 +1,11 @@
 var React = require('react');
 
 var Video = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+
+  this.context.router.getCurrentParams().videoId
 
   render: function() {
     

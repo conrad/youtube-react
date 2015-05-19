@@ -22,7 +22,7 @@ function getState() {
 
 var Main = React.createClass({
 
-  mixins: [ReactFireMixin],
+  // mixins: [ReactFireMixin],
 
   getInitialState: function() {
     return ({     //Store.getData();
@@ -46,9 +46,6 @@ var Main = React.createClass({
     return (
       <div className='container'>
         <Header searchText={this.state.searchText} onSearchSubmit={this.handleSearch} />
-        <Videos videos={this.state.videos} />
-
-        {/* this is the important part */}
         <RouteHandler/>
       </div>
 
@@ -63,3 +60,11 @@ var Main = React.createClass({
 });
 
 module.exports = Main;
+
+var routes = (
+  <Route name="app" path="/" handler={Main}>      //
+    <Route name="viewer" path=":videoId" handler={Viewer}/>
+    <DefaultRoute handler={List}/>
+  </Route>
+);
+

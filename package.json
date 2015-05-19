@@ -20,7 +20,8 @@
   "keywords": [],
   "dependencies": {
     "flux": "^2.0.3",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
   },
   "devDependencies": {
     "browserify": "^10.1.3",
