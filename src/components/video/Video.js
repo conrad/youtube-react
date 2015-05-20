@@ -5,7 +5,8 @@ var Video = React.createClass({
   render: function() {
     
     // var url = this.props.data.url.replace("watch?v=", "v/");
-    var url = 'https://www.youtube.com/watch?v=829os-2BQBM';
+    var myurl = 'https://www.youtube.com/watch?v=829os-2BQBM';
+    var url = myurl.replace("watch?v=", "v/");
     return (
       <li>
         <iframe title="YouTube video player"  type="text/html" 
