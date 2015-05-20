@@ -4,16 +4,15 @@ var Video = React.createClass({
 
   render: function() {
     
-    var url = this.props.data.url.replace("watch?v=", "v/");
-
+    // var url = this.props.data.url.replace("watch?v=", "v/");
+    var url = 'https://www.youtube.com/watch?v=829os-2BQBM';
     return (
       <li>
-        <a href="#">
-          <img className='thumbnail' src={this.props.image} />
-        </a>
-        <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
-        <p>by {this.props.data.author}</p>
-        <p>View: {this.props.data.views} - {this.props.data.date}</p>
+        <iframe title="YouTube video player"  type="text/html" 
+          width="640" height="390" 
+          src={url} frameBorder="0" allowFullScreen>
+        </iframe>
+        
       </li>
     );
   }
@@ -22,14 +21,8 @@ var Video = React.createClass({
 
 module.exports = Video;
 
+// <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
+//         <p>by {this.props.data.author}</p>
+//         <p>View: {this.props.data.views} - {this.props.data.date}</p>
 
-
-return (
-  <li>
-    <iframe title="YouTube video player"  type="text/html" 
-      width="640" height="390" 
-      src={url} frameBorder="0" allowFullScreen>
-    </iframe>
-    <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
-    <p>by {this.props.data.author}</p>
-    <p>View: {this.props.data.views} - {this.props.data.date}</p>
+        

@@ -1,4 +1,4 @@
 var React = require('react');
-var Main = require('./components/main/Main');
+var MainRouter = require('./components/MainRouter');
 
-React.render(<Main />, document.getElementById('app'));
+React.render(<MainRouter />, document.getElementById('app'));

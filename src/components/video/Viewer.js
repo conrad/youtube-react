@@ -1,9 +1,9 @@
 /** jsx React.DOM */
 
 var React = require('react');
-var Header = require('./Header');
-var Videos = require('./Videos');
 var AppStore = require('../../stores/AppStore');
+var Video = require('./Video');
+var Header = require('../main/Header');
 
 function getState() {
   return {
@@ -26,6 +26,7 @@ var Main = React.createClass({
 
   // Because of the data binding provided by ReactFire, any changes to Firebase will be reflected in realtime to this.state.
   componentDidMount: function() {
+    console.log("IN VIEWER")
     AppStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function(){
@@ -38,7 +39,8 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className='container'>
-        <Videos videos={this.state.videos} />
+        <Header searchText={this.state.searchText} onSearchSubmit={this.handleSearch} />
+        <Video/>
       </div>
 
     );
