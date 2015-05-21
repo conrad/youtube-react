@@ -1,5 +1,5 @@
 var React = require('react');
-
+var Link = require('react-router-component').Link;
 var Video = React.createClass({
 
   render: function() {
@@ -8,9 +8,9 @@ var Video = React.createClass({
     var src = "http://" + this.props.data.image;
     return (
       <li>
-        <a href='#'>
-          <img className='thumbnail' src={src}/> 
-        </a>
+        <Link href="/viewer" videoId={this.props.data.url}>
+          <img className='thumbnail' src={src}/>
+        </Link>
         <a href='#'>
           <p>{this.props.data.title} <a href={this.props.data.url} /> </p>
         </a>
